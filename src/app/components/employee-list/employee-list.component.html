@@ -1,0 +1,53 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Employee Management</a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/employees">Employee List</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/employees/add">Add Employee</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-4">
+    <h2>Employee List</h2>
+
+    <div class="table-responsive" *ngIf="employees && employees.length">
+        <table class="table table-striped table-bordered mt-3">
+            <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>DOB</th>
+                    <th>Department</th>
+                    <th>Salary</th>
+                    <th>Manager</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let emp of employees">
+                    <td>{{emp.id}}</td>
+                    <td>{{emp.firstName}} {{emp.lastName}}</td>
+                    <td>{{emp.dob}}</td>
+                    <td>{{emp.departments}}</td>
+                    <td>{{emp.salary}}</td>
+                    <td>{{emp.manager?.id}}</td>
+                    <td>
+                        <button class="btn btn-sm btn-info me-1" (click)="viewEmployee(emp.id!)">View</button>
+                        <button class="btn btn-sm btn-warning me-1" (click)="editEmployee(emp.id!)">Edit</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="col-md-4" *ngIf="!employees">
+        <span>No Employees found!</span>
+    </div>
+</div>

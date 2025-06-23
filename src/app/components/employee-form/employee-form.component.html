@@ -1,0 +1,41 @@
+<p>employee-form works!</p>
+
+<div class="container mt-4">
+    <h2>{{ isEdit ? 'Edit Employee' : 'Add Employee' }}</h2>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label>First Name</label>
+        <input formControlName="firstName" class="form-control" required />
+      </div>
+      <div class="mb-3">
+        <label>Last Name</label>
+        <input formControlName="lastName" class="form-control" required />
+      </div>
+      <div class="mb-3">
+        <label>Date of Birth</label>
+        <input type="date" formControlName="dob" class="form-control" required />
+      </div>
+      <div class="mb-3">
+        <label>Department</label>
+        <select formControlName="departments" class="form-select" required>
+          <option *ngFor="let dept of departments" [value]="dept">{{ dept }}</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label>Salary</label>
+        <input type="number" formControlName="salary" class="form-control" required />
+      </div>
+      <div class="mb-3">
+        <label>Manager (optional)</label>
+        <select formControlName="managerId" class="form-select">
+          <option value="">None</option>
+          <option *ngFor="let mgr of managers" [value]="mgr.id">
+            {{ mgr.firstName }} {{ mgr.lastName }}
+          </option>
+        </select>
+      </div>
+      <button class="btn btn-success" type="submit">{{ isEdit ? 'Update' : 'Save' }}</button>
+      <a routerLink="/employees" class="btn btn-secondary ms-2">Cancel</a>
+    </form>
+  </div>
+  

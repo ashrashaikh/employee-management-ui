@@ -1,0 +1,38 @@
+<div class="container mt-4" *ngIf="employee">
+    <h2>Employee Details</h2>
+    <table class="table table-bordered">
+      <tbody>
+        <tr>
+          <th>ID</th>
+          <td>{{ employee.id }}</td>
+        </tr>
+        <tr>
+          <th>First Name</th>
+          <td>{{ employee.firstName }}</td>
+        </tr>
+        <tr>
+          <th>Last Name</th>
+          <td>{{ employee.lastName }}</td>
+        </tr>
+        <tr>
+          <th>Date of Birth</th>
+          <td>{{ employee.dob }}</td>
+        </tr>
+        <tr>
+          <th>Department</th>
+          <td>{{ employee.departments }}</td>
+        </tr>
+        <tr>
+          <th>Salary</th>
+          <td>{{ employee.salary }}</td>
+        </tr>
+        <tr *ngIf="employee.manager">
+          <th>Manager</th>
+          <td>{{ employee.manager.firstName }} {{ employee.manager.lastName }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <a routerLink="/employees" class="btn btn-primary">Back to List</a>
+  </div>
+  
+  
